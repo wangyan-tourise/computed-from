@@ -4,11 +4,11 @@
 
     </header>
     <el-row class="tac">
-      <el-col :span="12">
+      <!-- <el-col :span="12" class="sidebar"> -->
         <el-menu default-active="2" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose"
           background-color="#545c64" text-color="#fff" active-text-color="#ffd04b" v-for="(item, index) in menus"
-          :key="index">
-          <el-menu-item index="4" @click="goTo('/home')">
+          :key="index" style="height:100%;">
+          <el-menu-item index="0" @click="goTo('/home')">
             <span slot="title">主页</span>
           </el-menu-item>
           <el-submenu :index="''+index">
@@ -20,8 +20,11 @@
             </el-menu-item-group>
           </el-submenu>
         </el-menu>
-      </el-col>
+      <!-- </el-col> -->
     </el-row>
+		<div class="content">
+      <router-view />
+    </div>
   </div>
 </template>
 <script>
@@ -62,7 +65,7 @@ export default {
 <style  scoped>
 #app {
   width: 100%;
-  height: 1000px;
+  height: 100%;
 }
 #app .header {
   height: 50px;
@@ -73,6 +76,15 @@ export default {
   width: 15%;
   height: 100%;
   display: inline-block;
+}
+#app .sidebar{
+	height: 100%;
+}
+#app .content {
+  width: 85%;
+  height: 100%;
+  background: white;
+  float: right;
 }
 /deep/.el-submenu__title {
   height: 30px;

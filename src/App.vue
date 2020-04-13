@@ -1,9 +1,6 @@
 <template>
   <div id="app">
     <Menus></Menus>
-    <div class="content">
-      <router-view />
-    </div>
   </div>
 </template>
 
@@ -19,14 +16,11 @@ export default {
 
 <style scoped>
 #app {
-  height: 100%;
+  height: 645px;
 	width: 100%;
 	display: inline-block;
+	transition: all 0.5s;
+	/* overflow: hidden; */
 }
-#app .content {
-  width: 85%;
-  height: 100%;
-  background: black;
-  float: right;
-}
+
 </style>
