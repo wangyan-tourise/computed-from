@@ -11,16 +11,16 @@
       </div>
 
     </header>
-    <el-row class="tac" :style="`height: ${menuHeigth}px`">
+    <el-row class="tac" id="tac">
       <!-- <el-col :span="12" class="sidebar"> -->
-      <el-menu default-active="1" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose"
+      <el-menu :default-active="defaultActive" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose"
         background-color="darkslateblue" text-color="#fff" active-text-color="#ffd04b">
         <el-menu-item index="1" @click="goTo('/home')">
           <i class="el-icon-location"></i>
-          <span slot="title" >主页</span>
+          <span slot="title">主页</span>
         </el-menu-item>
         <el-submenu v-for="val in menus" :key="val.indexStr" :index="val.indexStr">
-          <template slot="title"  @click="goTo(val.path)">
+          <template slot="title" @click="goTo(val.path)">
             <i :class="val.class"></i>
             <span>{{val.title}}</span>
           </template>
@@ -34,7 +34,7 @@
       </el-menu>
       <!-- </el-col> -->
     </el-row>
-    <div class="content" :style="`height: ${menuHeigth}px`">
+    <div class="content" id="content">
       <router-view />
     </div>
   </div>
@@ -45,12 +45,6 @@ export default {
   data () {
     return {
       menus: [
-        // {
-        //   class: 'el-icon-location',
-        //   title: '主页',
-        //   indexStr: '1',
-        //   path: '/home'
-        // },
         {
           class: 'el-icon-menu',
           title: '按钮和表格的操作',
@@ -61,21 +55,29 @@ export default {
               path: '/business',
               indexStr: '2-1'
             },
+          ]
+        },
+        {
+          class: 'el-icon-menu',
+          title: '游戏',
+          indexStr: '3',
+          options: [
             {
-              title: '添加数据',
-              path: '/business',
-              indexStr: '2-2'
+              title: '红军打日本',
+              path: '/game/redVSWhite',
+              indexStr: '3-1'
             },
             {
-              title: '添加数据',
-              path: '/business',
-              indexStr: '2-3'
-            }
+              title: '憋棋',
+              path: '/game/bieQI',
+              indexStr: '3-2'
+            },
           ]
         }
       ],
       menuHeigth: 500,
-      userName: 'vwangyan'
+      userName: 'vwangyan',
+      defaultActive: '1'
     }
   },
   methods: {
@@ -96,23 +98,35 @@ export default {
       this.$message('我不玩了！！！')
     },
     setMenuHeigth () {
-      var winH = window.innerHeight
-      this.menuHeigth = winH - 100
+      let winH = window.innerHeight
+      let menuHeigth = winH - 90
+      let content = document.getElementById('content')
+      let tac = document.getElementById('tac')
+      content.style = `height: ${menuHeigth}px`
+      tac.style = `height: ${menuHeigth}px`
+    },
+    where (menus) {
+      menus.forEach((item) => {
+        if (item.path === this.$route.path) {
+          this.defaultActive = item.indexStr
+        }else if(item.options){
+					this.where(item.options)
+				}
+      })
     }
-  },
-  computed: {
-    // menuHeigth(){
-    // 	var winH = window.innerHeight
-    // 	let menuHeigth = winH - 100
-    // 	return menuHeigth
-    // }
   },
   mounted () {
     window.onload = this.setMenuHeigth()
     window.addEventListener('resize', function () {
-      var winH = window.innerHeight
-      this.menuHeigth = winH - 100
+      let winH = window.innerHeight
+      let menuHeigth = winH - 90
+      let content = document.getElementById('content')
+      let tac = document.getElementById('tac')
+      content.style = `height: ${menuHeigth}px`
+      tac.style = `height: ${menuHeigth}px`
     })
+		this.where(this.menus)
+
   },
 }
 </script>
@@ -128,7 +142,7 @@ export default {
 }
 #app .tac {
   width: 15%;
-  /* height: 100%; */
+  overflow: hidden;
   background-color: darkslateblue;
   display: inline-block;
 }

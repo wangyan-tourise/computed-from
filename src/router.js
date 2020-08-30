@@ -30,5 +30,22 @@ export default new Router({
 				}
 			],
 		},
+		{
+			path: '/game',
+			redirect: '/game/redVSWhite',
+			component: () => import('./components/menus.vue'),
+			children: [
+				{
+					path: '/game/redVSWhite',
+					name: 'redVSWhite',
+					component: () => import('./components/game/redVSWhite.vue')
+				},
+				{
+					path: '/game/bieQi',
+					name: 'bieQi',
+					component: () => import('./components/game/bieQi.vue')
+				}
+			],
+		},
 	]
 })

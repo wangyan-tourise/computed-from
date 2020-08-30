@@ -354,7 +354,7 @@ export default {
   },
   mounted () {
     this.routeName = this.$route.name;
-    this.requestList();
+    // this.requestList();
   },
 };
 </script>
