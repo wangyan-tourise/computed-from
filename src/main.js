@@ -3,7 +3,8 @@ import App from './App.vue'
 import router from './router'
 import store from './store.js'
 import elementUI from 'element-ui'
-import './assets/begin.css' 
+import './assets/image/begin.css' 
+import 'element-ui/lib/theme-chalk/index.css';
 
 
 Vue.use(router)

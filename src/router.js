@@ -1,6 +1,5 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-const Home = () => import('./components/home/index.vue')
 
 
 Vue.use(Router);
@@ -10,14 +9,22 @@ export default new Router({
 		{
 			path: '/',
 			redirect: '/home',
+			component: () => import('./components/menus.vue'),
 			children: [
 				{
 					path: '/home',
 					name: 'home',
-					component: Home,
-				},
+					component: () => import('./components/home/index.vue'),
+				}
+			],
+		},
+		{
+			path: '/business',
+			redirect: '/business/index',
+			component: () => import('./components/menus.vue'),
+			children: [
 				{
-					path: '/business',
+					path: '/business/index',
 					name: 'business',
 					component: () => import('./components/business/index.vue')
 				}
