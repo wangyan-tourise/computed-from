@@ -47,5 +47,10 @@ export default new Router({
 				}
 			],
 		},
+		{
+			path: '/GuChengShuang',
+			name: 'GuChengShuang',
+			component: () => import('./components/GuChengShuang/pages/listPage.vue')
+		}
 	]
 })

@@ -8,9 +8,6 @@
 // import Menus from './components/menus'
 export default {
   name: 'App',
-  components: {
-    // Menus,
-  }
 }
 </script>
 

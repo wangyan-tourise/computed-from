@@ -2,11 +2,17 @@
   <div id='app'>
     <header class="header">
       <div>
-        <img src="../assets/image/headLogo.png" alt="" class="logo">
+        <div style="display:inline-block;">
+          <img src="../assets/image/headLogo.png" alt="" class="logo">
+        </div>
+
         <div class="header-right">
           <img src="../assets/image/touXiang.jpg" alt="头像" class="touxiang">
           <span style="display:inline-block;line-height:50px;margin-left:10px">{{userName}}</span>
           <el-button @click="signOut()" type="text" style="color:orange;margin-left:10px">切换账号</el-button>
+        </div>
+        <div class="button-area">
+          <el-button type="text" class="qisimiaoxiang" @click="goTo('/GuChengShuang')">奇思妙想</el-button>
         </div>
       </div>
 
@@ -109,9 +115,9 @@ export default {
       menus.forEach((item) => {
         if (item.path === this.$route.path) {
           this.defaultActive = item.indexStr
-        }else if(item.options){
-					this.where(item.options)
-				}
+        } else if (item.options) {
+          this.where(item.options)
+        }
       })
     }
   },
@@ -125,7 +131,7 @@ export default {
       content.style = `height: ${menuHeigth}px`
       tac.style = `height: ${menuHeigth}px`
     })
-		this.where(this.menus)
+    this.where(this.menus)
 
   },
 }
@@ -162,6 +168,7 @@ export default {
 .logo {
   height: 78px;
   margin: 5px 10px 5px 14px;
+  display: inline-block;
 }
 #app .header .touxiang {
   width: 50px;
@@ -175,5 +182,20 @@ export default {
   display: flex;
   justify-content: center;
   text-align: center;
+}
+.qisimiaoxiang {
+  display: inline-block;
+  color: white;
+  height: 100%;
+  /* width: 100%; */
+  line-height: 50px;
+}
+.button-area {
+	height: 90px;
+	width: 820px;
+  line-height: 90px;
+  /* display: inline-block; */
+  float: right;
+  vertical-align: middle;
 }
 </style>
