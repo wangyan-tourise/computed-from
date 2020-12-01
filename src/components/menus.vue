@@ -60,6 +60,11 @@ export default {
               title: '添加数据',
               path: '/business',
               indexStr: '2-1'
+						},
+						{
+              title: '拖拽表单',
+              path: '/formCreate',
+              indexStr: '2-2'
             },
           ]
         },

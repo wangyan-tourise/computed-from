@@ -27,7 +27,14 @@ export default new Router({
 					path: '/business/index',
 					name: 'business',
 					component: () => import('./components/business/index.vue')
-				}
+				},
+				{
+					path: '/business/formCreate',
+					name: 'FormCreate',
+					component: () => import('./components/business/formCreate.vue')
+				},
+				
+
 			],
 		},
 		{
@@ -50,7 +57,7 @@ export default new Router({
 		{
 			path: '/GuChengShuang',
 			name: 'GuChengShuang',
-			component: () => import('./components/GuChengShuang/pages/listPage.vue')
+			component: () => import('./components/GuChengShuang/pages/cixi.vue')
 		}
 	]
 })
