@@ -1,35 +1,20 @@
 <template>
   <div id='app' class="box">
-    <div @mouseup.capture="mouseUp" @mousemove="mouseMove">
-      <div v-for="(i,index) in boxShowList" :key="index" class="ul">
-        <div class="box1" v-for="val in i" :key="val.id">
-          <div class="box2" :style="`background:${val.backgroundColor}`" @mousedown.stop="mouseDown">
-
-          </div>
-        </div>
-      </div>
-      <div v-for="(i,index) in boxShowList" :key="index" class="ul">
-        <div class="box1" v-for="val in i" :key="val.id">
-          <div class="box2" :style="`background:${val.backgroundColor}`" @mousedown.stop="mouseDown">
-
-          </div>
-        </div>
-      </div>
-      <div v-for="(i,index) in boxShowList" :key="index" class="ul">
-        <div class="box1" v-for="val in i" :key="val.id">
-          <div class="box2" :style="`background:${val.backgroundColor}`" @mousedown.stop="mouseDown">
-
-          </div>
-        </div>
+      <div @mouseup.capture="mouseUp" @mousemove="mouseMove">
+            <div v-for="(i,index) in boxShowList" :key="index" class="ul">
+              <div class="box1" v-for="val in i" :key="val.id">
+                <div class="box2" :style="`background:${val.backgroundColor}`" @mousedown.stop="mouseDown">
+                  
+                </div>
+              </div>
+            </div>
+            <div v-if="moving" class="box1" :style="`z-index:2;position:absolute;top:${top}px;left:${left}px`">
+              <div class="box2" :style="`background:${topColor}`">
+                
+              </div>
+            </div>
       </div>
     </div>
-
-    <div v-if="moving" class="box1" :style="`z-index:2;position:absolute;top:${top}px;left:${left}px`">
-      <div class="box2" :style="`background:${topColor}`">
-
-      </div>
-    </div>
-  </div>
 </template>
 <script>
 export default {
@@ -156,8 +141,8 @@ export default {
   margin: 0;
 }
 .box1 {
-  width: 100%;
-  height: 100%;
+  width: 120px;
+  height: 120px;
   padding: 10px;
   box-sizing: border-box;
   cursor: move;

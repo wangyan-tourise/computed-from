@@ -8,25 +8,10 @@
           </div>
         </div>
       </div>
-      <div v-for="(i,index) in boxShowList" :key="index" class="ul">
-        <div class="box1" v-for="val in i" :key="val.id">
-          <div class="box2" :style="`background:${val.backgroundColor}`" @mousedown.stop="mouseDown">
+      <div v-if="moving" class="box1" :style="`z-index:2;position:absolute;top:${top}px;left:${left}px`">
+        <div class="box2" :style="`background:${topColor}`">
 
-          </div>
         </div>
-      </div>
-      <div v-for="(i,index) in boxShowList" :key="index" class="ul">
-        <div class="box1" v-for="val in i" :key="val.id">
-          <div class="box2" :style="`background:${val.backgroundColor}`" @mousedown.stop="mouseDown">
-
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div v-if="moving" class="box1" :style="`z-index:2;position:absolute;top:${top}px;left:${left}px`">
-      <div class="box2" :style="`background:${topColor}`">
-
       </div>
     </div>
   </div>

@@ -1,32 +1,29 @@
 <template>
-  <div id='app' class="box">
-    <div @mouseup.capture="mouseUp" @mousemove="mouseMove">
-      <div v-for="(i,index) in boxShowList" :key="index" class="ul">
-        <div class="box1" v-for="val in i" :key="val.id">
-          <div class="box2" :style="`background:${val.backgroundColor}`" @mousedown.stop="mouseDown">
-
-          </div>
-        </div>
-      </div>
-      <div v-for="(i,index) in boxShowList" :key="index" class="ul">
-        <div class="box1" v-for="val in i" :key="val.id">
-          <div class="box2" :style="`background:${val.backgroundColor}`" @mousedown.stop="mouseDown">
-
-          </div>
-        </div>
-      </div>
-      <div v-for="(i,index) in boxShowList" :key="index" class="ul">
-        <div class="box1" v-for="val in i" :key="val.id">
-          <div class="box2" :style="`background:${val.backgroundColor}`" @mousedown.stop="mouseDown">
-
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div v-if="moving" class="box1" :style="`z-index:2;position:absolute;top:${top}px;left:${left}px`">
-      <div class="box2" :style="`background:${topColor}`">
-
+  <div id='app'>
+    <div class="content">
+      <div class="box" @mouseup.capture="mouseUp" @mousemove="mouseMove">
+            <div v-for="(i,index) in boxShowList" :key="index" class="ul">
+              <div class="box1" v-for="val in i" :key="val.id">
+                <div class="box2" :style="`background:${val.backgroundColor}`" @mousedown.stop="mouseDown">
+                  <div class="box3" v-if="val.imgSrc">
+                    <img src="./backImg/tou1.jpg" alt="" width="50px" height="50px">
+                  </div>
+                  <div class="box3" v-if="val.button">
+                    <span>编辑</span>|<span>删除</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div v-if="moving" class="box1" :style="`z-index:2;position:absolute;top:${top}px;left:${left}px`">
+              <div class="box2" :style="`background:${topColor}`">
+                <div class="box3" v-if="indexData.imgSrc">
+                  <img src="./backImg/tou1.jpg" alt="" width="50px" height="50px">
+                </div>
+                <div class="box3" v-if="indexData.button">
+                  <span>编辑</span>|<span>删除</span>
+                </div>
+              </div>
+            </div>
       </div>
     </div>
   </div>
@@ -147,6 +144,15 @@ export default {
 }
 </script>
 <style scoped>
+#app {
+  width: 100%;
+  height: 100%;
+  background-color: purple;
+}
+.content {
+  width: 100%;
+  height: 100%;
+}
 .box {
   width: 100%;
   height: 100%;
@@ -156,8 +162,8 @@ export default {
   margin: 0;
 }
 .box1 {
-  width: 100%;
-  height: 100%;
+  width: 120px;
+  height: 120px;
   padding: 10px;
   box-sizing: border-box;
   cursor: move;
